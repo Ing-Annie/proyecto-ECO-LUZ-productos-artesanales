@@ -1,0 +1,498 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ECOLUZ Lámparas de Tutuma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=Young+Serif&display=swap">
+<style>
+/* Concepto: una página que se enciende. Hero con la lámpara como foco de luz, secciones sobre crema (claro) o madera oscura (oscuro). */
+:root {
+  --bg: #f6efe1;
+  --surface: #fffaf0;
+  --surface-2: #efe4cc;
+  --fg: #2f2418;
+  --muted: #6b5a45;
+  --line: #d9c9a6;
+  --green: #4d5b2a;
+  --green-ink: #fffaf0;
+  --wood: #7a4a22;
+  --glow: #f2b432;
+  --glow-soft: rgba(242, 180, 50, .28);
+  --danger: #a3341f;
+  --ok: #3d6b2a;
+  --art: #efeeea;
+  --f-display: "Young Serif", Georgia, serif;
+  --f-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-label: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1d1710; --surface: #281f15; --surface-2: #33281b; --fg: #f3e8d0; --muted: #bba988;
+    --line: #4a3a26; --green: #a9b96a; --green-ink: #1d1710; --wood: #d1955a; --glow: #f6c250;
+    --glow-soft: rgba(246, 194, 80, .22); --danger: #ee8c78; --ok: #9fcf7f; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1d1710; --surface: #281f15; --surface-2: #33281b; --fg: #f3e8d0; --muted: #bba988;
+  --line: #4a3a26; --green: #a9b96a; --green-ink: #1d1710; --wood: #d1955a; --glow: #f6c250;
+  --glow-soft: rgba(246, 194, 80, .22); --danger: #ee8c78; --ok: #9fcf7f; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 17px; line-height: 1.6;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1.12; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+.wrap { max-width: 1120px; margin-inline: auto; }
+.label { font-family: var(--f-label); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; font-size: .86rem; color: var(--wood); }
+:focus-visible { outline: 3px solid var(--glow); outline-offset: 2px; }
+
+/* Cabecera */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.top-in { display: flex; align-items: center; gap: 14px; min-height: 64px; flex-wrap: wrap; padding-block: 6px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
+.brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.brand b { font-family: var(--f-label); font-size: 1.5rem; letter-spacing: .12em; font-weight: 700; }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; }
+.nav a { font-family: var(--f-label); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; font-size: .95rem; text-decoration: none; padding: 8px 10px; border-radius: 6px; color: var(--muted); }
+.nav a:hover { color: var(--fg); background: var(--surface-2); }
+.icons { display: flex; gap: 6px; align-items: center; }
+.ib { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; text-decoration: none; position: relative; font: inherit; padding: 0; }
+.ib:hover { border-color: var(--glow); }
+.ib svg { width: 20px; height: 20px; }
+.count { position: absolute; top: -5px; right: -5px; min-width: 20px; height: 20px; border-radius: 10px; background: var(--glow); color: #2f2418; font: 700 .75rem/20px var(--f-label); text-align: center; padding-inline: 4px; }
+.count[hidden] { display: none !important; }
+
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 1rem/1 var(--f-body); padding: 14px 22px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; text-decoration: none; min-height: 48px; }
+.btn svg { width: 20px; height: 20px; }
+.btn-main { background: var(--glow); color: #2f2418; }
+.btn-main:hover { filter: brightness(1.07); }
+.btn-green { background: var(--green); color: var(--green-ink); }
+.btn-line { background: transparent; border-color: var(--line); color: var(--fg); }
+.btn-line:hover { border-color: var(--glow); }
+.btn-sm { padding: 10px 16px; min-height: 40px; font-size: .95rem; }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding-block: 56px 64px; }
+.hero h1 { font-size: clamp(2.3rem, 5.4vw, 4rem); margin-block: 14px 18px; }
+.hero h1 em { font-style: normal; color: var(--wood); }
+.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 34ch; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.lampwrap { position: relative; display: grid; place-items: center; min-width: 0; }
+.lampwrap::before { content: ""; position: absolute; width: 112%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, var(--glow-soft) 0%, transparent 66%); }
+.lampwrap img { position: relative; width: min(100%, 440px); border-radius: 50%; aspect-ratio: 1; object-fit: cover; object-position: 50% 38%; box-shadow: 0 0 0 10px var(--surface), 0 0 0 11px var(--line), 0 24px 60px -20px var(--glow-soft); }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 26px; }
+.chip { font-family: var(--f-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+
+section { padding-block: 64px; }
+.sec-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 60ch; }
+.sec-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.sec-head p { color: var(--muted); }
+.band { background: var(--surface); border-block: 1px solid var(--line);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+
+/* Catálogo */
+.notice { display: flex; gap: 10px; align-items: flex-start; background: var(--surface-2); border: 1px dashed var(--wood); border-radius: 10px; padding: 12px 16px; font-size: .95rem; margin-bottom: 24px; }
+.tools { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 24px; }
+.search { flex: 1 1 240px; min-width: 0; position: relative; }
+.search input { width: 100%; font: inherit; padding: 12px 16px 12px 44px; min-height: 48px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
+.search svg { position: absolute; left: 14px; top: 50%; translate: 0 -50%; width: 20px; height: 20px; color: var(--muted); }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filters button { font: 600 .95rem var(--f-label); letter-spacing: .08em; text-transform: uppercase; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: var(--green-ink); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.ph { position: relative; aspect-ratio: 1; background: var(--surface-2); overflow: hidden; }
+.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tag { position: absolute; top: 10px; left: 10px; font: 600 .78rem var(--f-label); letter-spacing: .1em; text-transform: uppercase; background: var(--bg); border: 1px solid var(--line); padding: 3px 9px; border-radius: 999px; color: var(--muted); }
+.card .body { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card h3 { font-size: 1.3rem; }
+.card .desc { color: var(--muted); font-size: .96rem; flex: 1; }
+.price { font: 700 1.5rem var(--f-label); letter-spacing: .03em; font-variant-numeric: tabular-nums; }
+.price small { font-size: .8rem; font-weight: 500; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-left: 4px; }
+.empty { padding: 32px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; }
+
+/* Nosotros */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.about > * { min-width: 0; }
+.steps { display: grid; gap: 18px; }
+.step { display: grid; grid-template-columns: 44px 1fr; gap: 14px; }
+.step i { font-style: normal; width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: var(--green-ink); display: grid; place-items: center; font: 700 1.15rem var(--f-label); }
+.step b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 1.15rem; }
+.step span { color: var(--muted); font-size: .97rem; }
+.prose { display: grid; gap: 16px; }
+.prose p { max-width: 62ch; }
+
+/* Galería */
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.gal figure { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+.gal img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.gal .slot { aspect-ratio: 1; display: grid; place-items: center; text-align: center; padding: 16px; color: var(--muted); background: repeating-linear-gradient(45deg, var(--surface-2), var(--surface-2) 10px, var(--surface) 10px, var(--surface) 20px); font-size: .92rem; }
+.mv { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
+.mvc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.mvc p { font-family: var(--f-display); font-size: 1.2rem; line-height: 1.45; }
+.proc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+.proc li { min-width: 0; }
+.proc figure { margin: 0; height: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); display: flex; flex-direction: column; }
+.pimg { position: relative; aspect-ratio: 4 / 5; background: var(--surface-2); }
+.pimg img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pn { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; border-radius: 50%; background: var(--green); color: var(--green-ink); display: grid; place-items: center; font: 700 1.1rem var(--f-label); }
+.proc figcaption { padding: 12px 14px 16px; font-family: var(--f-display); font-size: 1.05rem; line-height: 1.25; }
+.gal img.art { object-fit: contain; background: var(--art); padding: 10px; }
+.tpl { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.tcard { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; min-width: 0; display: flex; flex-direction: column; }
+.tart { background: var(--art); aspect-ratio: 3 / 4; display: grid; place-items: center; padding: 14px; }
+.tart img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.tbody { padding: 16px 18px 20px; display: grid; gap: 6px; }
+.tbody h3 { font-size: 1.25rem; }
+.tbody p { color: var(--muted); font-size: .96rem; }
+.tnote { margin-top: 24px; color: var(--muted); }
+.tnote a { color: var(--wood); font-weight: 600; }
+.gal figcaption { padding: 10px 14px; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
+
+/* Contacto */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.contact > * { min-width: 0; }
+.social { display: grid; gap: 10px; }
+.social a { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); text-decoration: none; min-height: 56px; }
+.social a:hover { border-color: var(--glow); }
+.social svg { width: 24px; height: 24px; flex: none; color: var(--wood); }
+.social b { font-family: var(--f-label); font-size: 1.1rem; letter-spacing: .06em; text-transform: uppercase; }
+.social span { color: var(--muted); font-size: .92rem; margin-left: auto; text-align: right; overflow-wrap: anywhere; }
+
+footer { padding-block: 40px 56px; border-top: 1px solid var(--line); display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: space-between; color: var(--muted); font-size: .95rem; }
+footer .brand b { color: var(--fg); }
+
+/* Carrito */
+.shade { position: fixed; inset: 0; background: rgba(20, 12, 4, .55); z-index: 40; }
+.drawer { position: fixed; top: 0; bottom: 0; right: 0; width: min(460px, 100%); background: var(--bg); z-index: 41; display: flex; flex-direction: column; border-left: 1px solid var(--line);
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.drawer header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.drawer header h2 { font-size: 1.5rem; }
+.dbody { flex: 1; overflow-y: auto; padding: 18px 20px; display: grid; gap: 16px; align-content: start; }
+.line { display: grid; grid-template-columns: 64px 1fr; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.line img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; background: var(--surface-2); }
+.line h4 { margin: 0; font: 400 1.05rem var(--f-display); }
+.line .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.qty button { width: 38px; height: 38px; border: 0; background: transparent; color: var(--fg); font-size: 1.2rem; cursor: pointer; border-radius: 50%; }
+.qty output { min-width: 28px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.rm { background: none; border: 0; color: var(--danger); cursor: pointer; font: inherit; font-size: .9rem; text-decoration: underline; padding: 6px; }
+.totals { border-top: 1px solid var(--line); padding: 16px 20px; display: grid; gap: 6px; background: var(--surface); }
+.totals div { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+.totals .tot { font: 700 1.5rem var(--f-label); letter-spacing: .03em; }
+.totals small { color: var(--muted); }
+
+/* Formulario */
+form.co { display: grid; gap: 14px; }
+.fld { display: grid; gap: 6px; }
+.fld label { font-family: var(--f-label); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; font-size: .85rem; color: var(--muted); }
+.fld input, .fld select, .fld textarea { font: inherit; padding: 12px 14px; min-height: 48px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); width: 100%; }
+.fld textarea { min-height: 80px; resize: vertical; }
+.fld .err { color: var(--danger); font-size: .88rem; min-height: 1em; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.sum { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.sum textarea { width: 100%; min-height: 200px; font: .92rem/1.5 ui-monospace, Menlo, Consolas, monospace; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.status { padding: 12px 14px; border-radius: 10px; background: var(--surface-2); border-left: 4px solid var(--glow); font-size: .95rem; }
+.toast { position: fixed; left: 50%; translate: -50% 0; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 12px 20px; border-radius: 999px; z-index: 60; font-weight: 500; max-width: calc(100% - 32px); text-align: center; }
+
+@media (max-width: 860px) {
+  .hero, .about, .contact { grid-template-columns: 1fr; gap: 32px; }
+  .hero { padding-block: 32px 40px; }
+  .lampwrap { order: -1; max-width: 340px; margin-inline: auto; }
+  section { padding-block: 44px; }
+  .nav { order: 3; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+  .nav a { white-space: nowrap; }
+}
+@media (max-width: 480px) { .two { grid-template-columns: 1fr; } .brand b { font-size: 1.25rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="top"><div class="wrap top-in">
+  <a class="brand" href="#inicio"><img src="logo.jpg" alt="Logotipo de ECOLUZ"><b>ECOLUZ</b></a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#catalogo">Catálogo</a><a href="#nosotros">Nosotros</a><a href="#galeria">Procesos</a><a href="#plantillas">Plantillas</a><a href="#contacto">Contacto</a>
+  </nav>
+  <div class="icons" id="topSocial"></div>
+  <button class="ib" id="openCart" aria-label="Abrir carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.2a1 1 0 0 0 1-.8L19 8H6.2"/><circle cx="9.5" cy="20" r="1.2"/><circle cx="16.5" cy="20" r="1.2"/></svg><span class="count" id="cartCount" hidden>0</span></button>
+</div></div>
+
+<main class="wrap" id="inicio">
+  <div class="hero">
+    <div>
+      <span class="label">Lámparas de tutuma · hechas a mano</span>
+      <h1>Iluminamos tus espacios con <em>arte natural</em></h1>
+      <p class="lead">Cada tutuma se talla a mano para dejar pasar la luz en dibujos de hojas y puntos. Una lámpara distinta para cada rincón.</p>
+      <div class="cta">
+        <a class="btn btn-main" href="#catalogo">Ver catálogo</a>
+        <a class="btn btn-line" data-wa href="#" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+      </div>
+      <div class="chips"><span class="chip">Artesanal</span><span class="chip">Material natural</span><span class="chip">Precios en Bs</span></div>
+    </div>
+    <div class="lampwrap"><img src="lampara.jpg" alt="Lámpara de tutuma ECOLUZ encendida, con calados de hojas"></div>
+  </div>
+</main>
+
+<div class="band"><section class="wrap" id="catalogo">
+  <div class="sec-head"><span class="label">Catálogo</span><h2>Elige tu lámpara</h2><p>Agrega al carrito las que te gusten y envía tu pedido por WhatsApp. ECOLUZ lo confirma contigo.</p></div>
+  <div class="notice"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:3px"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg><span><b>Tres modelos, hechos a mano.</b> Cada tutuma es única: el dibujo y el tono pueden variar un poco de una pieza a otra.</span></div>
+  <div class="tools">
+    <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Buscar lámpara" aria-label="Buscar lámpara"></div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar por tipo"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section></div>
+
+<section class="wrap" id="nosotros">
+  <div class="about">
+    <div class="prose">
+      <span class="label">Sobre nosotros</span>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem)">La tutuma también puede dar luz</h2>
+      <p>ECOLUZ es un emprendimiento artesanal que convierte la tutuma, un fruto que se usa desde hace generaciones como recipiente, en lámparas decorativas.</p>
+      <p>Cada pieza se trabaja a mano, se calan sus dibujos y se le pone una luz cálida por dentro. Así la tradición artesanal se encuentra con un diseño actual, pensado para casas, cafés y regalos.</p>
+      <p style="color:var(--muted);font-size:.92rem">Texto base armado con la información del emprendimiento. ECOLUZ puede reemplazarlo por su historia completa.</p>
+    </div>
+    <div class="steps" aria-label="Proceso artesanal">
+      <div class="step"><i>1</i><div><b>Selección de la tutuma</b><span>Se elige y se deja secar el fruto hasta que queda firme.</span></div></div>
+      <div class="step"><i>2</i><div><b>Limpieza y corte</b><span>Se prepara la superficie y se abre la boca de la lámpara.</span></div></div>
+      <div class="step"><i>3</i><div><b>Calado del diseño</b><span>Hojas, mandalas y puntos se tallan a mano, uno por uno.</span></div></div>
+      <div class="step"><i>4</i><div><b>Acabado y luz</b><span>Se protege el material y se instala el portalámparas con foco.</span></div></div>
+    </div>
+  </div>
+  <div class="mv">
+    <article class="mvc"><span class="label">Misión</span><p>Fabricar y comercializar lámparas artesanales elaboradas con tutumas, ofreciendo productos innovadores, funcionales y de alta calidad, con un sistema web que facilite la compra.</p></article>
+    <article class="mvc"><span class="label">Visión</span><p>Ser líderes en la fabricación y comercialización de lámparas artesanales, ofreciendo productos de alta calidad, innovadores y sostenibles que promuevan el cuidado del medio ambiente.</p></article>
+  </div>
+</section>
+
+<div class="band"><section class="wrap" id="galeria">
+  <div class="sec-head"><span class="label">Elaboración</span><h2>Procesos de elaboración</h2><p>Así se hace cada lámpara, desde la tutuma entera hasta el producto terminado.</p></div>
+  <ol class="proc">
+    <li><figure><div class="pimg"><img src="proceso-1.jpg" style="object-position:50% 55%" alt="Cortando la tutuma con una sierra" loading="lazy"><span class="pn">1</span></div><figcaption>Cortando la tutuma</figcaption></figure></li>
+    <li><figure><div class="pimg"><img src="proceso-2.jpg" style="object-position:50% 45%" alt="Sacando la pulpa del interior de la tutuma" loading="lazy"><span class="pn">2</span></div><figcaption>Sacando la pulpa</figcaption></figure></li>
+    <li><figure><div class="pimg"><img src="proceso-3.jpg" style="object-position:50% 55%" alt="Tallando la tutuma con una herramienta de mano" loading="lazy"><span class="pn">3</span></div><figcaption>Tallando la tutuma</figcaption></figure></li>
+    <li><figure><div class="pimg"><img src="proceso-4.jpg" style="object-position:50% 55%" alt="Cómo está quedando el tallado de la tutuma" loading="lazy"><span class="pn">4</span></div><figcaption>Cómo está quedando el tallado de tutuma</figcaption></figure></li>
+    <li><figure><div class="pimg"><img src="proceso-5.jpg" style="object-position:36% 50%" alt="Colocando el soquete o bombilla y el cable al soporte" loading="lazy"><span class="pn">5</span></div><figcaption>Colocando el soquete o bombilla y el cable al soporte</figcaption></figure></li>
+    <li><figure><div class="pimg"><img src="proceso-6.jpg" style="object-position:30% 40%" alt="Acomodando los últimos detalles de la lámpara" loading="lazy"><span class="pn">6</span></div><figcaption>Acomodando los últimos detalles</figcaption></figure></li>
+    <li><figure><div class="pimg"><img src="proceso-7.jpg" style="object-position:50% 60%" alt="Producto terminado: lámpara de mesa encendida" loading="lazy"><span class="pn">7</span></div><figcaption>Producto terminado</figcaption></figure></li>
+  </ol>
+</section></div>
+
+<section class="wrap" id="plantillas">
+  <div class="sec-head"><span class="label">Plantillas</span><h2>Plantillas de calado</h2><p>Estos son los dibujos que se calan en la tutuma. La luz pasa por las partes abiertas y proyecta la figura en la pared.</p></div>
+  <div class="tpl">
+    <article class="tcard"><div class="tart"><img src="diseno-pavo.jpg" alt="Plantilla de pavo real sobre una rama con hojas"></div><div class="tbody"><h3>Pavo real</h3><p>Pavo real sobre una rama, con la cola abierta y hojas alrededor.</p></div></article>
+    <article class="tcard"><div class="tart"><img src="diseno-flores.jpg" alt="Plantilla de tulipanes y flores con capullos"></div><div class="tbody"><h3>Tulipanes y capullos</h3><p>Tulipanes y capullos con tallos finos, en una franja para el costado de la tutuma.</p></div></article>
+    <article class="tcard"><div class="tart"><img src="diseno-patron.jpg" alt="Plantilla de flores de seis pétalos repetidas"></div><div class="tbody"><h3>Flores de seis pétalos</h3><p>Flores repetidas en filas, para cubrir toda la superficie de la tutuma.</p></div></article>
+  </div>
+  <p class="tnote">Para consultas sobre los diseños, escríbenos por <a data-wa href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p>
+</section>
+
+<section class="wrap" id="contacto">
+  <div class="contact">
+    <div class="prose">
+      <span class="label">Contacto</span>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem)">¿Tienes una consulta o quieres hacer un pedido?</h2>
+      <p>Escríbenos por WhatsApp o síguenos en redes para ver lámparas nuevas.</p>
+      <div><a class="btn btn-green" data-wa href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 18.8L4 20z"/><path d="M9 9c0 3 3 6 6 6l1.2-1.4-2-1-.9.8c-.9-.4-1.8-1.300-2.200-2.200l.8-.9-1-2L9 9z"/></svg>Escribir por WhatsApp</a></div>
+    </div>
+    <div class="social" id="contactSocial"></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <a class="brand" href="#inicio"><img src="logo.jpg" alt=""><b>ECOLUZ</b></a>
+  <span>Lámparas de tutuma · Iluminamos tus espacios con arte natural</span>
+  <div class="icons" id="footSocial"></div>
+</footer>
+
+<div id="layer"></div>
+
+<script>
+(function () {
+  /* ---------- Datos ---------- */
+  var LINKS = {
+    tiktok: { name: 'TikTok', handle: '@ecoluz01', url: 'https://www.tiktok.com/@ecoluz01' },
+    facebook: { name: 'Facebook', handle: 'ECOLUZ', url: 'https://www.facebook.com/share/1E5t1kkhHW/' },
+    whatsapp: { name: 'WhatsApp', handle: 'Mensaje directo', url: 'https://api.whatsapp.com/message/FE4QXG73CI5YN1?autoload=1&app_absent=0' },
+    instagram: { name: 'Instagram', handle: '@luz_de_tutuma', url: 'https://www.instagram.com/luz_de_tutuma?utm_source=qr&stkn=NHRpYzNtOGoycGhz' }
+  };
+  var ICON = {
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>',
+    tiktok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.4 2.600 2.200 4.200 5 4.400"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M13.500 20.800V13h2.600l.4-3h-3V8.200c0-.9.300-1.500 1.600-1.500h1.500V4.100A18 18 0 0 0 14.400 4C12.200 4 10.800 5.300 10.800 7.700V10H8.300v3h2.500v7.800"/></svg>',
+    whatsapp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.300-4.200A8 8 0 1 1 8.400 18.800L4 20z"/><path d="M9 9c0 3 3 6 6 6l1.200-1.400-2-1-.9.8c-.9-.4-1.800-1.300-2.200-2.200l.8-.9-1-2L9 9z"/></svg>'
+  };
+  /* Catálogo real de ECOLUZ: tres productos con precios en Bs. Las descripciones y las fotos son provisionales. */
+  var PRODUCTS = [
+    { id: 'p1', name: 'Lámpara de mesa', type: 'Mesa', img: 'mesa.jpg', pos: '35% 30%', desc: 'Lámpara artesanal de tutuma con calados, sobre base de madera. Para velador, escritorio o repisa.', price: 250 },
+    { id: 'p2', name: 'Lámpara colgante', type: 'Colgante', img: 'colgante.jpg', pos: '50% 62%', desc: 'Lámpara artesanal de tutuma con calados de luna y estrella, para dar luz cálida a un rincón.', price: 145 },
+    { id: 'p3', name: 'Lámpara decorativa', type: 'Decorativa', img: 'decorativa.jpg', pos: '50% 55%', desc: 'Tutuma decorada con un dibujo de puntos que se ilumina por dentro. Para ambientar espacios.', price: 160 }
+  ];
+  var IMG = 'lampara.jpg';
+
+  /* ---------- Utilidades ---------- */
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  function bs(n) { return 'Bs ' + n.toLocaleString('es-BO', { minimumFractionDigits: 0, maximumFractionDigits: 2 }); }
+  function toast(msg) {
+    var t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = msg;
+    document.body.appendChild(t); setTimeout(function () { t.remove(); }, 2400);
+  }
+  function el(html) { var d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  /* ---------- Redes y WhatsApp ---------- */
+  document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = LINKS.whatsapp.url; });
+  ['instagram', 'tiktok', 'facebook', 'whatsapp'].forEach(function (k) {
+    var l = LINKS[k];
+    var ic = function () { return '<a class="ib" href="' + l.url + '" target="_blank" rel="noopener noreferrer" aria-label="' + l.name + '" title="' + l.name + '">' + ICON[k] + '</a>'; };
+    $('#topSocial').insertAdjacentHTML('beforeend', ic());
+    $('#footSocial').insertAdjacentHTML('beforeend', ic());
+    $('#contactSocial').insertAdjacentHTML('beforeend', '<a href="' + l.url + '" target="_blank" rel="noopener noreferrer">' + ICON[k] + '<b>' + l.name + '</b><span>' + esc(l.handle) + '</span></a>');
+  });
+
+  /* ---------- Carrito ---------- */
+  var cart = {};
+  try { var saved = JSON.parse(localStorage.getItem('ecoluz-cart') || '{}'); Object.keys(saved).forEach(function (id) { if (PRODUCTS.some(function (p) { return p.id === id; }) && saved[id] > 0) cart[id] = Math.min(99, saved[id] | 0); }); } catch (e) {}
+  function persist() { try { localStorage.setItem('ecoluz-cart', JSON.stringify(cart)); } catch (e) {} }
+  function find(id) { return PRODUCTS.filter(function (p) { return p.id === id; })[0]; }
+  function items() { return Object.keys(cart).map(function (id) { return { p: find(id), q: cart[id] }; }); }
+  function subtotal() { return items().reduce(function (s, i) { return s + i.p.price * i.q; }, 0); }
+  function count() { return items().reduce(function (s, i) { return s + i.q; }, 0); }
+  function setQty(id, q) { if (q <= 0) delete cart[id]; else cart[id] = Math.min(99, q); persist(); refresh(); }
+  function add(id) { setQty(id, (cart[id] || 0) + 1); toast(find(id).name + ' agregada al carrito'); }
+
+  function refresh() {
+    var c = count(), b = $('#cartCount'); b.textContent = c; b.hidden = c === 0;
+    if ($('#drawer')) renderDrawer();
+  }
+
+  /* ---------- Catálogo ---------- */
+  var types = ['Todas'].concat(PRODUCTS.map(function (p) { return p.type; }).filter(function (t, i, a) { return a.indexOf(t) === i; }));
+  var activeType = 'Todas';
+  function renderFilters() {
+    $('#filters').innerHTML = types.map(function (t) { return '<button type="button" aria-pressed="' + (t === activeType) + '" data-t="' + esc(t) + '">' + esc(t) + '</button>'; }).join('');
+  }
+  function renderGrid() {
+    var q = $('#q').value.trim().toLowerCase();
+    var list = PRODUCTS.filter(function (p) { return (activeType === 'Todas' || p.type === activeType) && (!q || (p.name + ' ' + p.desc + ' ' + p.type).toLowerCase().indexOf(q) > -1); });
+    $('#grid').innerHTML = list.length ? list.map(function (p) {
+      return '<article class="card"><div class="ph"><span class="tag">' + esc(p.type) + '</span><img src="' + p.img + '" style="object-position:' + p.pos + '" alt="Foto de ' + esc(p.name) + '"></div>' +
+        '<div class="body"><h3>' + esc(p.name) + '</h3><p class="desc">' + esc(p.desc) + '</p>' +
+        '<div class="price">' + bs(p.price) + '</div>' +
+        '<button class="btn btn-green" data-add="' + p.id + '" type="button">Agregar al carrito</button></div></article>';
+    }).join('') : '<div class="empty" style="grid-column:1/-1">No encontramos lámparas con esa búsqueda. Prueba con otra palabra o escríbenos por WhatsApp.</div>';
+  }
+  renderFilters(); renderGrid();
+  $('#filters').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; activeType = b.dataset.t; renderFilters(); renderGrid(); });
+  $('#q').addEventListener('input', renderGrid);
+  $('#grid').addEventListener('click', function (e) { var b = e.target.closest('[data-add]'); if (b) add(b.dataset.add); });
+
+  /* ---------- Panel del carrito y compra ---------- */
+  var stage = 'cart'; // cart | form | done
+  var form = { name: '', phone: '', mode: 'Recojo en persona', zone: '', notes: '' };
+  var lastMsg = '';
+
+  function message() {
+    var lines = ['*Pedido ECOLUZ*', '', 'Nombre: ' + form.name.trim(), 'Teléfono: ' + form.phone.trim(), 'Entrega: ' + form.mode];
+    if (form.zone.trim()) lines.push('Zona / dirección: ' + form.zone.trim());
+    lines.push('', '*Productos*');
+    items().forEach(function (i) { lines.push('- ' + i.q + ' x ' + i.p.name + ' (' + bs(i.p.price) + ' c/u) = ' + bs(i.p.price * i.q)); });
+    lines.push('', 'Total: ' + bs(subtotal()));
+    if (form.notes.trim()) lines.push('', 'Notas: ' + form.notes.trim());
+    lines.push('', 'Quedo atento a la confirmación del pedido y la forma de pago.');
+    return lines.join('\n');
+  }
+
+  function openDrawer() {
+    if ($('#drawer')) return;
+    stage = 'cart';
+    var layer = $('#layer');
+    layer.innerHTML = '<div class="shade" id="shade"></div><aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Carrito de compras"></aside>';
+    $('#shade').addEventListener('click', closeDrawer);
+    $('#drawer').addEventListener('click', onDrawerClick);
+    $('#drawer').addEventListener('input', onDrawerInput);
+    renderDrawer();
+    var c = $('#closeCart'); if (c) c.focus();
+  }
+  function closeDrawer() { $('#layer').innerHTML = ''; $('#openCart').focus(); }
+  $('#openCart').addEventListener('click', openDrawer);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && $('#drawer')) closeDrawer(); });
+
+  function head(title) { return '<header><h2>' + title + '</h2><button class="ib" id="closeCart" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>'; }
+
+  function renderDrawer() {
+    var d = $('#drawer'); if (!d) return;
+    var list = items();
+    if (stage !== 'done' && list.length === 0) stage = 'cart';
+    if (stage === 'cart') {
+      d.innerHTML = head('Tu carrito') + '<div class="dbody">' + (list.length ? list.map(function (i) {
+        return '<div class="line"><img src="' + i.p.img + '" style="object-position:' + i.p.pos + '" alt=""><div><h4>' + esc(i.p.name) + '</h4><div class="price" style="font-size:1.1rem">' + bs(i.p.price) + '</div>' +
+          '<div class="row"><div class="qty"><button type="button" data-dec="' + i.p.id + '" aria-label="Quitar una unidad">−</button><output aria-live="polite">' + i.q + '</output><button type="button" data-inc="' + i.p.id + '" aria-label="Agregar una unidad">+</button></div>' +
+          '<button class="rm" type="button" data-rm="' + i.p.id + '">Eliminar</button></div>' +
+          '<div style="margin-top:6px;color:var(--muted);font-size:.9rem">Subtotal: ' + bs(i.p.price * i.q) + '</div></div></div>';
+      }).join('') : '<div class="empty">Tu carrito está vacío. Agrega una lámpara desde el catálogo.</div>') + '</div>' +
+        '<div class="totals"><div><span>Subtotal</span><span>' + bs(subtotal()) + '</span></div><div class="tot"><span>Total</span><span>' + bs(subtotal()) + '</span></div><small>Envío y forma de pago se coordinan por WhatsApp.</small>' +
+        '<button class="btn btn-main" type="button" data-go="form"' + (list.length ? '' : ' disabled style="opacity:.5"') + '>Continuar con el pedido</button></div>';
+    } else if (stage === 'form') {
+      d.innerHTML = head('Datos del pedido') + '<div class="dbody"><form class="co" id="co" novalidate>' +
+        '<div class="fld"><label for="f-name">Nombre completo</label><input id="f-name" name="name" autocomplete="name" value="' + esc(form.name) + '"><div class="err" id="e-name"></div></div>' +
+        '<div class="fld"><label for="f-phone">Teléfono o WhatsApp</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" value="' + esc(form.phone) + '"><div class="err" id="e-phone"></div></div>' +
+        '<div class="fld"><label for="f-mode">Entrega</label><select id="f-mode" name="mode"><option' + (form.mode === 'Recojo en persona' ? ' selected' : '') + '>Recojo en persona</option><option' + (form.mode === 'Envío a domicilio' ? ' selected' : '') + '>Envío a domicilio</option></select></div>' +
+        '<div class="fld"><label for="f-zone">Zona o dirección (opcional)</label><input id="f-zone" name="zone" autocomplete="street-address" value="' + esc(form.zone) + '"></div>' +
+        '<div class="fld"><label for="f-notes">Notas (opcional)</label><textarea id="f-notes" name="notes">' + esc(form.notes) + '</textarea></div>' +
+        '<div class="sum"><b>Resumen</b><br>' + list.map(function (i) { return i.q + ' × ' + esc(i.p.name) + ' · ' + bs(i.p.price * i.q); }).join('<br>') + '<br><b>Total: ' + bs(subtotal()) + '</b></div>' +
+        '<div class="status">Este paso no cobra nada. Prepara tu pedido para enviarlo por WhatsApp; ECOLUZ te confirma disponibilidad, total y pago.</div>' +
+        '<div style="display:grid;gap:10px"><button class="btn btn-main" type="submit">Preparar pedido</button><button class="btn btn-line" type="button" data-go="cart">Volver al carrito</button></div></form></div>';
+    } else {
+      d.innerHTML = head('Envía tu pedido') + '<div class="dbody">' +
+        '<div class="status"><b>Tu pedido aún no está enviado.</b> Toca el botón verde, pega el mensaje en la conversación de WhatsApp y envíalo. Después ECOLUZ lo confirmará.</div>' +
+        '<div class="sum"><label for="msg" class="label">Mensaje del pedido</label><textarea id="msg" readonly>' + esc(lastMsg) + '</textarea></div>' +
+        '<div style="display:grid;gap:10px"><button class="btn btn-main" type="button" id="copyMsg">Copiar mensaje</button>' +
+        '<a class="btn btn-green" id="waGo" href="' + LINKS.whatsapp.url + '" target="_blank" rel="noopener noreferrer">Abrir WhatsApp de ECOLUZ</a>' +
+        '<button class="btn btn-line" type="button" data-go="form">Editar datos</button>' +
+        '<button class="btn btn-line" type="button" data-clear="1">Vaciar carrito y terminar</button></div></div>';
+    }
+  }
+
+  function onDrawerInput(e) { var t = e.target; if (t.name && form.hasOwnProperty(t.name)) form[t.name] = t.value; }
+
+  function onDrawerClick(e) {
+    var t = e.target.closest('button, a'); if (!t) return;
+    if (t.id === 'closeCart') return closeDrawer();
+    if (t.dataset.inc) return setQty(t.dataset.inc, (cart[t.dataset.inc] || 0) + 1);
+    if (t.dataset.dec) return setQty(t.dataset.dec, (cart[t.dataset.dec] || 0) - 1);
+    if (t.dataset.rm) return setQty(t.dataset.rm, 0);
+    if (t.dataset.go) { stage = t.dataset.go; return renderDrawer(); }
+    if (t.dataset.clear) { cart = {}; persist(); stage = 'cart'; refresh(); closeDrawer(); toast('Gracias por tu pedido. Esperamos tu mensaje en WhatsApp.'); return; }
+    if (t.id === 'copyMsg') {
+      var ta = $('#msg'), ok = function () { toast('Mensaje copiado'); }, fail = function () { ta.focus(); ta.select(); toast('Selecciona el texto y cópialo'); };
+      try { navigator.clipboard.writeText(lastMsg).then(ok, fail); } catch (err) { fail(); }
+    }
+  }
+
+  document.addEventListener('submit', function (e) {
+    if (e.target.id !== 'co') return;
+    e.preventDefault();
+    var f = e.target, bad = false;
+    form.name = f.name.value; form.phone = f.phone.value; form.mode = f.mode.value; form.zone = f.zone.value; form.notes = f.notes.value;
+    var n = $('#e-name'), p = $('#e-phone');
+    n.textContent = ''; p.textContent = '';
+    if (form.name.trim().length < 3) { n.textContent = 'Escribe tu nombre completo.'; bad = true; }
+    if (form.phone.replace(/\D/g, '').length < 7) { p.textContent = 'Escribe un teléfono válido, con al menos 7 dígitos.'; bad = true; }
+    if (bad) { (n.textContent ? f.name : f.phone).focus(); return; }
+    lastMsg = message(); stage = 'done'; renderDrawer();
+  });
+
+  refresh();
+})();
+</script>
+
+</body></html>
